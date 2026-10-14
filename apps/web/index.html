@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101316" />
+    <meta name="description" content="A local, private audio stem separation workstation." />
+    <title>Stemroom — Local stem separation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" data-i18n-aria="brandHome"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>stemroom</span></a>
+        <div class="topbar-actions"><div class="language-switch" aria-label="Language"><button data-language="en" type="button" aria-pressed="false">EN</button><button data-language="ko" type="button" aria-pressed="false">한국어</button></div><div class="topbar-meta" aria-live="polite"><span class="status-dot"></span><span id="service-status"></span></div><button class="quiet-button" id="settings-button" type="button" data-i18n="settings"></button></div>
+      </header>
+      <section class="workspace" aria-label="Stem separation workspace">
+        <aside class="source-panel">
+          <div><p class="panel-label" data-i18n="newSession"></p><h1 data-i18n="headline"></h1><p class="intro-copy" data-i18n="intro"></p></div>
+          <label class="upload-zone" id="upload-zone" for="audio-file"><input id="audio-file" type="file" accept="audio/mpeg,audio/wav,audio/x-wav" hidden /><span class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4m0 0 4 4m-4-4L8 8M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg></span><strong id="upload-title"></strong><span id="upload-subtitle"></span></label>
+          <div class="source-details" id="source-details" hidden><span class="file-type" id="file-type">WAV</span><div><strong id="file-name"></strong><span id="file-size"></span></div><button class="icon-button" id="clear-file" type="button" data-i18n-aria="removeFile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+          <div class="processing-box" id="processing-box" hidden><div class="progress-row"><span id="processing-label"></span><strong id="processing-percent">0%</strong></div><div class="progress-track"><span id="progress-fill"></span></div><p id="processing-note"></p></div>
+          <div class="source-footer"><button class="primary-button" id="separate-button" type="button" disabled><span data-i18n="start"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button><p data-i18n="privacy"></p></div>
+        </aside>
+        <section class="mixer-panel" aria-label="Stem mixer">
+          <div class="mixer-topline"><div><p class="panel-label" data-i18n="workspace"></p><h2 id="session-title"></h2></div><span class="preview-badge" id="preview-badge"></span></div>
+          <div class="empty-workspace" id="empty-workspace"><div class="empty-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><h3 data-i18n="waitingTitle"></h3><p data-i18n="waitingCopy"></p></div>
+          <div class="mix-workspace" id="mix-workspace" hidden><div class="transport" aria-label="Playback controls"><button class="play-button" id="play-button" type="button" data-i18n-aria="play"><svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7V5Z"/></svg><svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg></button><span class="timecode" id="elapsed">00:00</span><input id="playhead" data-i18n-aria="position" type="range" min="0" max="100" value="0" /><span class="timecode" id="duration">00:00</span><div class="master-control"><span>MASTER</span><input id="master-volume" data-i18n-aria="master" type="range" min="0" max="100" value="86" /></div></div><div class="stem-list" id="stem-list"></div><div class="mix-footer"><p><span class="synthetic-dot"></span><span id="mix-note"></span></p><button class="download-all" id="download-all" type="button" disabled data-i18n="downloadAll"></button></div></div>
+        </section>
+      </section>
+    </main>
+    <dialog id="settings-dialog"><form method="dialog" class="settings-card"><div><p class="panel-label" data-i18n="settings"></p><h2 data-i18n="apiTitle"></h2><p data-i18n="apiCopy"></p></div><label><span data-i18n="apiLabel"></span><input id="api-url" type="url" placeholder="http://localhost:8000" /></label><div class="dialog-actions"><button class="quiet-button" value="cancel" data-i18n="cancel"></button><button class="primary-button" id="save-settings" value="default" data-i18n="save"></button></div></form></dialog>
+    <template id="stem-template"><article class="stem-channel"><div class="stem-accent"></div><div class="stem-name"><span class="stem-swatch"></span><div><strong></strong><span class="stem-origin"></span></div></div><div class="stem-wave" aria-hidden="true"></div><div class="channel-actions"><button class="mute-button" type="button" aria-pressed="false" data-i18n-aria="mute">M</button><button class="solo-button" type="button" aria-pressed="false" data-i18n-aria="solo">S</button></div><label class="volume-control"><span class="sr-only" data-i18n="volume"></span><input type="range" min="0" max="100" value="78" /></label><output class="volume-output">−2.4 dB</output><div class="download-menu"><button type="button" class="format-button">WAV</button><button type="button" class="format-button">MP3</button></div></article></template>
+    <script src="./i18n.js"></script><script src="./app.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,24 @@
+# Local Python environments and generated inference data
+apps/api/.venv/
+apps/api/data/
+apps/api/__pycache__/
+apps/api/smoke*.wav
+apps/api/smoke*.mp3
+apps/api/smoke*.zip
+apps/api/smoke-output/
+
+# Local configuration and editor files
+.env
+.env.*
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Packaging output
+outputs/
+
+# Local authoring and hosting metadata
+.openai/
+.impeccable/
+package-stage/
+
